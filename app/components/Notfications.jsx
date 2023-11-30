@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { TextToSpeech } from '@capacitor-community/text-to-speech';
 
 function Notfications() {
   const [data, setData] = useState([])
@@ -38,14 +37,8 @@ function Notfications() {
       } else {
         console.log("Empty or invalid data received");
       }
-      TextToSpeech.speak({
-        text: message,
-        lang: 'en-US',
-        rate: 1.0,
-        pitch: 1.0,
-        volume: 1.0,
-        category: 'ambient',
-      });
+      let utterance = new SpeechSynthesisUtterance(message);
+      speechSynthesis.speak(utterance);
       return setLimit(data.length)
     }
   });
