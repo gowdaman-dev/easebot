@@ -8,7 +8,7 @@ function DashboardNav() {
   const [userrole, setUserrole] = useState();
   const [menu, setMenu] = useState();
   const userinfo = async (email) => {
-    const req = await fetch("http://localhost:3000/api/user/useracc", {
+    const req = await fetch("/api/user/useracc", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
