@@ -4,6 +4,7 @@ import DashboardNav from '../components/DashboardNav'
 import AdminPanal from '../components/AdminPanal'
 import { useSession } from 'next-auth/react'
 function page() {
+  const { data: session } = useSession()
   return (
     <div className="flex flex-col w-screen min-h-screen text-white bg-black ">
       <DashboardNav/>
