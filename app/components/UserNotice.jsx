@@ -72,7 +72,7 @@ function UserNotice() {
           <div key={index} className="w-[90%] min-h-[40px] p-2 bg-gray-900 rounded">
             <p className="text-white">{item.message}</p>
             <form onSubmit={deleteRecord} className="flex justify-end" action="" method="post">
-              <input type="text" hidden name="id" value={item._id} />
+              <input type="text" hidden name="id" defaultValue={item._id} />
               <button type="submit" className="text-red-400"><AiOutlineDelete /></button>
             </form>
           </div>

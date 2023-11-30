@@ -6,8 +6,8 @@ export async function POST(req){
      try {
         await connectMongoDB();
         const {emaildata} = await req.json();
-        const {name , email , role} = await User.findOne({email:emaildata})
-        return NextResponse.json({username:name , usermail:email ,userrole:role})
+        const {role} = await User.findOne({email:emaildata})
+        return NextResponse.json({role})
      } catch (error){
         return NextResponse.json({error:'error from server'},{status:500})
      }
