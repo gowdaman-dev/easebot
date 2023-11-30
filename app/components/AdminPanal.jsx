@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 function AdminPanal() {
   const { data: session } = useSession();
   const [accounts , setAccounts] = useState([]);
-  useEffect(() => {
+  /*useEffect(() => {
     const users = async ()=>{
       try {
         const res = await fetch('/api/listuser')
@@ -18,7 +18,40 @@ function AdminPanal() {
     }
     users();
   })
+*/
 
+useEffect(() => {
+    const fetchUserNotice = async () => {
+      try {
+        const res = await fetch("/api/listuser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            getrole:"user"
+          }),
+        });
+
+        if (res.ok) {
+          const { admindata } = await res.json();
+          if (Array.isArray(admindata) && admindata.length > 0) {
+            setAccounts(admindata);
+          } else {
+            console.log("Empty or invalid data received");
+          }
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (session?.user?.email) {
+      fetchUserNotice();
+    }
+  });
   const deleteUser = async (e) => {
     e.preventDefault()
     try {
