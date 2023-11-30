@@ -3,12 +3,17 @@ import React from 'react'
 import DashboardNav from '../components/DashboardNav'
 import AdminPanal from '../components/AdminPanal'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 function page() {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
+  const router = useRouter()
+  if (!session?.user?.email){
+    router.push('/login')
+  }
   return (
-    <div className=" flex flex-col min-h-screen w-screen bg-black text-white">
+    <div className="flex flex-col w-screen min-h-screen text-white bg-black ">
       <DashboardNav/>
-      <div className="min-h-screen w-full flex flex-col py-4 items-center">
+      <div className="flex flex-col items-center w-full min-h-screen py-4">
             <AdminPanal/>
       </div>
     </div>
