@@ -39,7 +39,7 @@ function Notfications() {
       }
       let utterance = new SpeechSynthesisUtterance(message);
       utterance.rate = .7
-      utterance.voice = speechSynthesis.getVoices()[1450]
+      utterance.voice = speechSynthesis.getVoices()[1480]
       speechSynthesis.speak(utterance);
       return setLimit(data.length)
     }
