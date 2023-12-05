@@ -38,7 +38,7 @@ function Notfications() {
         console.log("Empty or invalid data received");
       }
       let utterance = new SpeechSynthesisUtterance(message);
-      utterance.rate = .7
+      utterance.rate = .8
       utterance.voice = speechSynthesis.getVoices()[1819]
       speechSynthesis.speak(utterance);
       return setLimit(data.length)
