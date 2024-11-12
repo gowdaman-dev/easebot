@@ -8,7 +8,9 @@ function Notfications() {
   useEffect(() => {
     const event = async () => {
       try {
-        const res = await fetch(`/api/notice`);
+        const res = await fetch(`/api/notice`,{
+          method:"PUT",
+        });
         if (!res.ok) {
           return new Error("can't fetch notice");
         }
