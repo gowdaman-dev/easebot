@@ -79,9 +79,6 @@ function Notfications() {
                 @{item.name}
               </p>
               <p className="text-purple-600 text-[1.1rem] ">{item.message}</p>
-              <p className="text-right p-3 text-[10px] text-gray-500">
-                {item.time}
-              </p>
             </motion.div>
           );
         })}
